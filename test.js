@@ -1,8 +1,11 @@
 const msw = require('./');
 const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc')
 
-const now = dayjs()
-const inAnHour = dayjs().add(2, 'hour') // add : 2 hours minimum // substract : no minimum hours
+dayjs.extend(utc)
+
+const now = dayjs().hour(12).utc()
+const inAnHour = dayjs(now).add(2, 'hour')
 
 const toUnix = date => dayjs(date).unix()
 
